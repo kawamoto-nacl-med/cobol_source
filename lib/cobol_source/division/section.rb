@@ -24,7 +24,7 @@ class CobolSource
       def collect_phrase(phrase)
         phrases = []
         @source.select { |sentence| sentence.no_sign? }.each do |sentence|
-          sentence.code.match(/^\s*#{phrase}\s+"?([\w.-]+)"?/i) do |md|
+          sentence.code.match(/^\s*#{phrase}\s+"?((?<=")[\w.-]+|[\w-]+)"?/i) do |md|
             phrases << md[1]
           end
         end
