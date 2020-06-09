@@ -10,11 +10,11 @@ class CobolSource
 
     def analyze_section
       @sections = {}
-      section_names = @source.select { |sentence| sentence.code =~ /SECTION\s*./ }.map { |sentence| sentence.code.split.first }
+      section_names = @source.select { |sentence| sentence.no_sign? && sentence.code =~ /SECTION\s*./ }.map { |sentence| sentence.code.split.first }
 
       section_numbers = []
       section_names.each do |section_name|
-        section_number = @source.index { |sentence| sentence.code =~ /\s*#{section_name}\s+SECTION\s*./ }
+        section_number = @source.index { |sentence| sentence.no_sign? && sentence.code =~ /\s*#{section_name}\s+SECTION\s*./ }
         section_numbers << { name: section_name, number: section_number }
       end
 
