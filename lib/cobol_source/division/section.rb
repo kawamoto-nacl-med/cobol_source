@@ -29,7 +29,7 @@ class CobolSource
           end
         end
 
-        phrases
+        phrases.uniq
       end
 
       # puts用
