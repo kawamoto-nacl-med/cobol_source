@@ -9,7 +9,7 @@ class CobolSource
   attr_reader :copybooks, :source, :identification_division, :environment_division, :data_division, :procedure_division
 
   def initialize(filename)
-    @source = File.readlines(filename, encoding: "euc-jp:utf-8").map { |line| Sentence.new(line) }
+    @source = File.readlines(filename, encoding: "CP51932:UTF-8").map { |line| Sentence.new(line) }
 
     analyze_division
   end
